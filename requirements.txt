@@ -1,5 +1,7 @@
 ibm-generative-ai[langchain]
-sentence_transformers
 langchain
-InstructorEmbedding
 ibm-generative-ai
+PyPDF2 
+pytesseract
+pandas
+
