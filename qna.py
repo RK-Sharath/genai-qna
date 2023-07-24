@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import pytesseract
 from PyPDF2 import PdfReader
+from pdf2image import convert_from_path
 from langchain.agents import create_csv_agent
 import os
 from apikey import apikey
