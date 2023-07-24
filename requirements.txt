@@ -1,0 +1,5 @@
+ibm-generative-ai[langchain]
+sentence_transformers
+langchain
+InstructorEmbedding
+ibm-generative-ai
