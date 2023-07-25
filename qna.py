@@ -10,13 +10,14 @@ from langchain.document_loaders import TextLoader
 from langchain.indexes import VectorstoreIndexCreator
 import time
 from genai.extensions.langchain import LangChainInterface
-from genai.schemas import ModelType, GenerateParams
+from genai.schemas import GenerateParams
 from genai.model import Credentials
 
 
 
 genai_api_key = st.sidebar.text_input("GenAI API Key", type="password")
 genai_api_url = st.sidebar.text_input("GenAI API URL", type="default")
+model = st.radio("Select the Watsonx LLM model",('google/flan-t5-xl','google/flan-t5-xxl','google/flan-ul2'))
 max_tokens = st.sidebar.number_input("Max new tokens")
 min_tokens = st.sidebar.number_input("Min new tokens")
 decoding_method = st.sidebar.text_input("Decoding method (Choose either greedy or sample) ", type="default")
@@ -25,7 +26,7 @@ temperature = st.sidebar.number_input("Temperature (Choose a decimal number betw
 
 creds = Credentials(api_key=genai_api_key, api_endpoint=genai_api_url)
 params = GenerateParams(decoding_method=decoding_method, temperature=temperature, max_new_tokens=max_tokens, min_new_tokens=min_tokens, repetition_penalty=repetition_penalty)
-llm=LangChainInterface(model=ModelType.FLAN_UL2, params=params, credentials=creds)
+llm=LangChainInterface(model=model, params=params, credentials=creds)
 
 def pdf_to_text(pdf_path):
     # Step 1: Convert PDF to images
